@@ -15,6 +15,16 @@ async function createComment(newComment, campgroundId) {
     }
 }
 
+// Read
+async function readComments(campgroundId) {
+    try {
+        const campground = await Campground.findById(campgroundId).populate("comments").exec();
+        return await campground.comments;
+    } catch (e) {
+        throw e;
+    }
+};
+
 // Read By Id
 async function readCommentById(commentId) {
     try {
@@ -38,11 +48,12 @@ async function deleteComment(commentId, campgroundId) {
     try {
         const campground = await Campground.findById(campgroundId);
         const index = await campground.comments.indexOf(commentId);
-        await campground.comments.slice(index, 1);
+        await campground.comments.splice(index, 1);
+        await campground.save();
         return await Comment.findByIdAndRemove(commentId);
     } catch (e) {
         throw e;
     }
 }
 
-module.exports = {createComment, readCommentById, updateComment, deleteComment};
+module.exports = {createComment, readComments, readCommentById, updateComment, deleteComment};
