@@ -1,9 +1,31 @@
-<form action="/campgrounds/<%= campgroundId %>/comments/" method="POST">
-    <div>
-        <input type="text" name="comment[author]" placeholder="Enter author's name">
+<% include ../layouts/header.ejs %>
+
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <h2 class="ui teal image header">
+            <i class="smile outline icon"></i>
+            <div class="content">
+                Add Comment
+            </div>
+        </h2>
+        <form class="ui large form" action="/campgrounds/<%= campgroundId %>/comments/" method="POST">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="pencil alternate icon"></i>
+                        <input type="text" name="comment[author]" placeholder="Enter author's name">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="file image icon"></i>
+                        <input type="text" name="comment[content]" placeholder="Enter content of your comment">
+                    </div>
+                </div>
+                <button class="ui fluid large teal submit button">Submit</button>
+            </div>
+        </form>
     </div>
-    <div>
-        <input type="text" name="comment[content]" placeholder="Enter content of your comment">
-    </div>
-    <button class="ui container">Submit</button>
-</form>
+</div>
+
+<% include ../layouts/footer.ejs %>

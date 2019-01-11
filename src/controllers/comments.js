@@ -36,8 +36,9 @@ async function updateComment(commentId, newComment) {
 // Delete
 async function deleteComment(commentId, campgroundId) {
     try {
-        let index = await Campground.findById(campgroundId).comments.find(commentId);
-        await Campground.findById(campgroundId).comments.slice(index, 1);
+        const campground = await Campground.findById(campgroundId);
+        const index = await campground.comments.indexOf(commentId);
+        await campground.comments.slice(index, 1);
         return await Comment.findByIdAndRemove(commentId);
     } catch (e) {
         throw e;

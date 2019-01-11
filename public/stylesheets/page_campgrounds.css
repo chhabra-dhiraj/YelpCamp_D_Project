@@ -1,0 +1,21 @@
+#menu {
+    background: teal;
+}
+
+#jumbotron {
+    background: #DADADA;
+    margin: 5.5rem 0 2rem 0;
+}
+
+.ui.fluid.image, .ui.fluid.image img, .ui.fluid.image svg, .ui.fluid.images, .ui.fluid.images img, .ui.fluid.images svg {
+    width: 300px;
+    height: 200px;
+}
+
+.ui.bordered.image img, .ui.bordered.image svg, .ui.bordered.images .image, .ui.bordered.images img, .ui.bordered.images svg, img.ui.bordered.image {
+    border: 3px solid rgba(0, 0, 0, .1);
+}
+
+#showContainer {
+    margin-top: 5.5em;
+}

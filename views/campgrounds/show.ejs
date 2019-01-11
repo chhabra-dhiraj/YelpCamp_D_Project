@@ -12,14 +12,28 @@
 
     <p><%- campground.desc %></p>
 
-    <a class="ui teal basic button" href="/campgrounds/<%= campground._id %>/comments/new">Add Comment</a>
+    <div class="ui fitted divider"></div>
 
-    <% campground.comments.forEach(function(value) { %>
-        <div class="ui container">
-            <div><strong><%= value.author %></strong></div>
-            <div><%- value.content %></div>
-        </div>
-    <% }); %>
+    <div class="ui container segment">
+        <a class="ui teal basic button" href="/campgrounds/<%= campground._id %>/comments/new">Add Comment</a>
+
+        <% campground.comments.forEach(function(value) { %>
+            <div class="ui container segment">
+                <div><strong><%= value.author %></strong></div>
+                <div><%- value.content %></div>
+                <form action="/campgrounds/<%= campground._id %>/comments/<%= value._id %>?_method=DELETE"
+                      method="POST">
+                    <div class="ui right floated">
+                        <a class="ui mini teal basic button"
+                           href="/campgrounds/<%= campground._id %>/comments/<%= value._id %>/edit">Edit
+                            comment</a>
+                        <button class="ui mini teal basic button delete_comment_button">Delete comment</button>
+                    </div>
+                </form>
+            </div>
+
+        <% }); %>
+    </div>
 
     <form id="delete_campground_form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST"></form>
 

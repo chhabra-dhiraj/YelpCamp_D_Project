@@ -6,7 +6,9 @@ const {createComment, readCommentById, updateComment, deleteComment} = require('
 
 // New
 router.get("/:id/comments/new", async function (req, res) {
-    res.render('comments/new', {campgroundId: req.params.id});
+    const cssFile = "page_add_comment";
+    const jsFile = "page_add_comment";
+    res.render('comments/new', {campgroundId: req.params.id, cssFile: cssFile, jsFile: jsFile});
 });
 
 // Create
@@ -19,7 +21,10 @@ router.post("/:id/comments", async function (req, res) {
 // Edit
 router.get("/:id/comments/:cId/edit", async function (req, res) {
     const comment = await readCommentById(req.params.cId);
-    res.render('comments/edit', {comment: comment});
+
+    const cssFile = "page_add_comment";
+    const jsFile = "page_add_comment";
+    res.render('comments/edit', {comment: comment, campgroundId: req.params.id, cssFile: cssFile, jsFile: jsFile});
 });
 
 router.put("/:id/comments/:cId", async function (req, res) {

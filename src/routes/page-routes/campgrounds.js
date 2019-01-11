@@ -9,15 +9,16 @@ router.use(bodyParser.urlencoded({extended: true}));
 // Read page
 router.get("/", async function (req, res) {
     const campgrounds = await readCampgrounds();
-    const cssFile = "index";
-    const jsFile = "index";
+
+    const cssFile = "page_campgrounds";
+    const jsFile = "page_campgrounds";
     res.render("campgrounds/index", {campgrounds: campgrounds, cssFile: cssFile, jsFile: jsFile});
 });
 
 // New page
 router.get("/new", async function (req, res) {
-    const cssFile = "new";
-    const jsFile = "new";
+    const cssFile = "page_add_campground";
+    const jsFile = "page_add_campground";
     res.render("campgrounds/new", {cssFile: cssFile, jsFile: jsFile});
 });
 
@@ -33,8 +34,8 @@ router.post("/", async function (req, res) {
 router.get("/:id", async function (req, res) {
     const campground = await readCampgroundById(req.params.id);
 
-    const cssFile = "index";
-    const jsFile = "show";
+    const cssFile = "page_campground";
+    const jsFile = "page_campground";
     res.render("campgrounds/show", {campground: campground, cssFile: cssFile, jsFile: jsFile});
 });
 
@@ -42,8 +43,8 @@ router.get("/:id", async function (req, res) {
 router.get("/:id/edit", async function (req, res) {
     const campground = await readCampgroundById(req.params.id);
 
-    const cssFile = "new";
-    const jsFile = "edit";
+    const cssFile = "page_add_campground";
+    const jsFile = "page_add_campground";
     res.render("campgrounds/edit", {campground: campground, cssFile: cssFile, jsFile: jsFile});
 });
 
