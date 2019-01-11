@@ -8,23 +8,23 @@
                 Add Your Campground
             </div>
         </h2>
-        <form class="ui large form" action="/campgrounds" method="post">
+        <form class="ui large form" action="/campgrounds/<%= campground._id %>?_method=PUT" method="post">
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="pencil alternate icon"></i>
-                        <input type="text" name="campground[name]" placeholder="Campground Name">
+                        <input type="text" name="campground[name]" value="<%= campground.name %>">
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="file image icon"></i>
-                        <input type="text" name="campground[image]" placeholder="Image URL">
+                        <input type="text" name="campground[image]" value="<%= campground.image %>">
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui left icon input">
-                        <textarea name="campground[desc]" placeholder="Enter your description here"></textarea>
+                        <textarea name="campground[desc]"><%= campground.desc %></textarea>
                     </div>
                 </div>
                 <button class="ui fluid large teal submit button">Post</button>

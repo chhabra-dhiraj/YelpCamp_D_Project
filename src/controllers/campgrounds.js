@@ -21,7 +21,7 @@ async function readCampgrounds() {
 // Read by Id
 async function readCampgroundById(campgroundId) {
     try {
-        return await Campground.findById(campgroundId);
+        return await Campground.findById(campgroundId).populate("comments").exec();
     } catch (e) {
         throw e;
     }

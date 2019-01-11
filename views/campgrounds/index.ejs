@@ -9,8 +9,21 @@
     <div class="ui stackable grid tiny">
         <% campgrounds.forEach(function (value) { %>
             <div class="four wide column">
-                <img class="ui rounded bordered fluid image" src="<%= value.image %>">
-                <div><%= value.name %></div>
+                <div class="ui center aligned conatiner segment">
+                    <img class="ui rounded bordered fluid image" src="<%= value.image %>">
+                    <div class="ui divided items">
+                        <div class="item">
+                            <div class="content">
+                                <div><%= value.name %></div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <a class="ui teal button" href="/campgrounds/<%= value._id %>">More Info -></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         <% }); %>
     </div>

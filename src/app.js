@@ -23,4 +23,3 @@ app.use(require('./routes/page-routes/index.js'));
 app.listen(3000, function () {
     console.log("Server has started!!");
 });
-

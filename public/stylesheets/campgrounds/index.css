@@ -15,3 +15,7 @@
 .ui.bordered.image img, .ui.bordered.image svg, .ui.bordered.images .image, .ui.bordered.images img, .ui.bordered.images svg, img.ui.bordered.image {
     border: 3px solid rgba(0, 0, 0, .1);
 }
+
+#showContainer {
+    margin-top: 5.5em;
+}

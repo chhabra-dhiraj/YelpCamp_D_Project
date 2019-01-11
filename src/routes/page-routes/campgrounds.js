@@ -10,13 +10,15 @@ router.use(bodyParser.urlencoded({extended: true}));
 router.get("/", async function (req, res) {
     const campgrounds = await readCampgrounds();
     const cssFile = "index";
-    res.render("campgrounds/index", {campgrounds: campgrounds, cssFile: cssFile});
+    const jsFile = "index";
+    res.render("campgrounds/index", {campgrounds: campgrounds, cssFile: cssFile, jsFile: jsFile});
 });
 
 // New page
 router.get("/new", async function (req, res) {
     const cssFile = "new";
-    res.render("campgrounds/new", {cssFile: cssFile});
+    const jsFile = "new";
+    res.render("campgrounds/new", {cssFile: cssFile, jsFile: jsFile});
 });
 
 // Create page
@@ -24,19 +26,25 @@ router.post("/", async function (req, res) {
     const newCampground = req.body.campground;
 
     const campground = await createCampground(newCampground);
-    res.redirect("/campgrounds");
+    res.redirect("/campgrounds/" + campground._id);
 });
 
 // Show page
 router.get("/:id", async function (req, res) {
     const campground = await readCampgroundById(req.params.id);
-    res.render("campgrounds/show");
+
+    const cssFile = "index";
+    const jsFile = "show";
+    res.render("campgrounds/show", {campground: campground, cssFile: cssFile, jsFile: jsFile});
 });
 
 // Edit page
-router.get("/:id", async function (req, res) {
+router.get("/:id/edit", async function (req, res) {
     const campground = await readCampgroundById(req.params.id);
-    res.render("campgrounds/edit");
+
+    const cssFile = "new";
+    const jsFile = "edit";
+    res.render("campgrounds/edit", {campground: campground, cssFile: cssFile, jsFile: jsFile});
 });
 
 // Update page

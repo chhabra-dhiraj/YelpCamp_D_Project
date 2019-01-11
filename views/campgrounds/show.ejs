@@ -1,0 +1,28 @@
+<% include ../layouts/header.ejs %>
+
+<div id="showContainer" class="ui container">
+    <h1><%= campground.name %></h1>
+
+    <img src="<%= campground.image %>">
+
+    <div>
+        <a class="ui teal basic button" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+        <button id="delete_campground_button" class="ui teal basic button">Delete</button>
+    </div>
+
+    <p><%- campground.desc %></p>
+
+    <a class="ui teal basic button" href="/campgrounds/<%= campground._id %>/comments/new">Add Comment</a>
+
+    <% campground.comments.forEach(function(value) { %>
+        <div class="ui container">
+            <div><strong><%= value.author %></strong></div>
+            <div><%- value.content %></div>
+        </div>
+    <% }); %>
+
+    <form id="delete_campground_form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST"></form>
+
+</div>
+
+<% include ../layouts/footer.ejs %>
